@@ -27,7 +27,10 @@ const RepoCard: React.FC<Props> = ({
   stars,
   forks,
 }) => {
-  const languageClass = language ? language.toLowerCase() : 'other';
+  const languageClass =
+    language === 'TypeScript' || language === 'JavaScript'
+      ? language.toLowerCase()
+      : 'other';
 
   return (
     <Container>
@@ -37,13 +40,13 @@ const RepoCard: React.FC<Props> = ({
           <Link to={`/${username}/${reponame}`}>{reponame}</Link>
         </header>
 
-        <p>{description}</p>
+        <p>{description === null ? '.' : description}</p>
       </TopSide>
       <BotSide>
         <ul>
           <li>
             <div className={`language ${languageClass}`} />
-            <span>{language}</span>
+            <span>{language === null ? 'Undefined' : language}</span>
           </li>
           <li>
             <StarIcon />
