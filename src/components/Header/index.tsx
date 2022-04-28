@@ -11,6 +11,8 @@ const Header: React.FC = () => {
     event.preventDefault();
 
     navigate(`/${search.toLowerCase().trim()}`);
+
+    setSearch('');
   }
 
   return (
